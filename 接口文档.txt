@@ -1,0 +1,18 @@
+FTP上传地址：
+193.218.39.28
+
+webservices
+
+3d31XColCDSrITD9
+
+绑定域名：http://demo.youtuosoftware.com/
+
+相关接口
+http://news.youtuosoftware.com/API/Industry/GetIndustryList 获取产业列表
+pageNum pageSize
+http://news.youtuosoftware.com/API/Industry/GetIndustryList 获取产业详情
+id
+http://news.youtuosoftware.com/API/Article/GetArticleList获取文章列表
+pageNum pageSize keywords
+http://news.youtuosoftware.com/API/Article/GetArticleList获取文章详情
+id

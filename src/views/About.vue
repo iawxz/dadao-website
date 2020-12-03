@@ -1,5 +1,235 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <pageHeader></pageHeader>
+    <pageNav :navIndex="navIndex" @send="getSelectIndex"></pageNav>
+    <div class="content">
+      <!-- 企业介绍 -->
+      <div class="intro LR_layout" v-if="selectIndex == 0">
+        <div class="left">
+          <div class="title">
+            <p>Craftsmanship<br />and quality</p>
+            <p>匠心千里，品质百代</p>
+          </div>
+        </div>
+        <div class="splitline"></div>
+        <div class="right">
+          <div class="essay">
+            <div class="title">关于大稻启运</div>
+            <div class="title_EN">about da dao qi yun</div>
+            <div class="text">
+              <p>大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。</p>
+              <p>
+                大稻启运定位于“成为城市商业，产业服务的一流供应商。”核心业务包括地产开发、工程建设、产业
+                投资、高端医疗及艺术投资。
+              </p>
+              <p>
+                在多元化的经营理念下，大稻启运积极拓展业务版图，使其经济实力和区域影响力不断地快速提升。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 企业理念 -->
+      <div class="philosophy LR_layout" v-if="selectIndex == 1">
+        <div class="left">
+          <div class="title">
+            <p>Craftsmanship<br />and quality</p>
+            <p>匠心千里，品质百代</p>
+          </div>
+        </div>
+        <div class="splitline"></div>
+        <div class="right">
+          <div class="box">
+            <div class="list" v-for="(item, index) in philosophy" :key="index">
+              <img :src="item.img" alt="" />
+              <p class="title">{{ item.title }}</p>
+              <p class="text">{{ item.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 企业架构 -->
+      <div class="architecture" v-else-if="selectIndex == 2">
+        <div class="architectureImg"></div>        
+      </div>
+    </div>
+    <pageFooter></pageFooter>
   </div>
 </template>
+
+<script>
+import pageNav from "../components/pageNav";
+export default {
+  name: "about",
+  data() {
+    return {
+      navIndex: this.$route.params.navIndex,
+      selectIndex: 0, //默认为0
+      philosophy: [
+        {
+          img: require("../assets/2_about/icon1.png"),
+          title: "企业定位",
+          text: "成为城市商业产业服务的一流供应商。",
+        },
+        {
+          img: require("../assets/2_about/icon2.png"),
+          title: "企业文化",
+          text: "与同道者同行，与同行者同享。",
+        },
+        {
+          img: require("../assets/2_about/icon3.png"),
+          title: "企业信仰",
+          text: "真诚、专注、极致、完美",
+        },
+      ],
+    };
+  },
+  props: {},
+  components: {
+    pageNav,
+  },
+  mounted() {},
+  methods: {
+    getSelectIndex(index) {
+      this.selectIndex = index;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.about {
+  height: 100%;
+}
+.content {  
+  .LR_layout {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    display: flex;
+    // align-items: baseline;
+    justify-content: space-around;
+
+    .left {
+      width: 40%;
+      .title {
+        margin-top: 60px;
+        margin-left: 357px;
+        p:first-child {
+          width: 194px;
+          height: 56px;
+          font-size: 24px;
+          font-family: Roboto;
+          font-weight: bold;
+          color: #616161;
+          line-height: 36px;
+          opacity: 0.2;
+          // margin-bottom: 20px;
+        }
+        p:nth-child(2) {
+          width: 171px;
+          height: 19px;
+          font-size: 18px;
+          font-family: PingFang SC;
+          font-weight: 800;
+          color: #b69d74;
+          line-height: 54px;
+        }
+      }
+    }
+    .splitline {
+      position: absolute;
+      left: 40%;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      z-index: -1;
+      background: #efefef;
+    }
+    .right {
+      width: 60%;
+      .essay {
+        margin-top: 60px;
+        margin-left: 30px;
+        .title {
+          width: 152px;
+          height: 23px;
+          font-size: 24px;
+          font-family: PingFang SC;
+          font-weight: 800;
+          color: #b69d74;
+          line-height: 54px;
+          margin-bottom: 17px;
+        }
+        .title_EN {
+          width: 335px;
+          height: 26px;
+          font-size: 32px;
+          font-family: Roboto;
+          font-weight: bold;
+          color: #616161;
+          line-height: 54px;
+          opacity: 0.3;
+          margin-bottom: 39px;
+        }
+        .text {
+          width: 755px;
+          height: 17px;
+          font-size: 16px;
+          font-family: PingFang SC;
+          font-weight: bold;
+          color: #000000;
+          line-height: 31px;
+          opacity: 0.7;
+          p {
+            margin-bottom: 30px;
+          }
+        }
+      }
+      .box {
+        margin-top: 60px;
+        margin-left: 30px;
+        display: flex;
+        .list {
+          margin-right: 43px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          img {
+            width: 60px;
+            height: 60px;
+            display: block;
+          }
+          p.title {
+            margin-top: 9px;
+            font-size: 20px;
+            font-family: PingFang SC;
+            font-weight: 800;
+            color: #3d3d3d;
+          }
+          p.text {
+            margin-top: 19px;
+            font-size: 16px;
+            font-family: PingFang SC;
+            font-weight: bold;
+            color: #3d3d3d;
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+  }
+  .architecture{
+    text-align: center;
+    .architectureImg{
+      width: 100%;
+      height: 800px;
+      background-image: url('../assets/2_about/architecture.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+</style>
