@@ -287,10 +287,10 @@ export default {
           }
         }
         .imgTextBox {
-          width: 100%;
+          width: 765px;
           margin-top: 15px;
           ::v-deep img {
-            width: 100%;
+            width: 765px;
           }
         }
       }

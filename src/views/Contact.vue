@@ -7,7 +7,7 @@
         <div class="left">
           <div class="title">
             <img src="../assets/7_contact/dadao_logo.png" alt="">
-            <p>Craftsmanship<br />and quality</p>
+            <p>Craftsmanship and quality</p>
             <p>匠心千里，品质百代</p>
           </div>
         </div>
@@ -99,9 +99,11 @@ export default {
           img{
             width: 246px;
             height: 94px;
+            display: block;
+            margin: 0 auto;
           }
           p:nth-child(2) {
-            width: 194px;
+            // width: 194px;
             height: 56px;
             font-size: 24px;
             font-family: Roboto;
@@ -111,15 +113,17 @@ export default {
             opacity: 0.2;
             margin-top: 34px;
             margin-bottom: 20px;
+            text-align: center;
           }
           p:nth-child(3) {
-            width: 171px;
+            // width: 171px;
             height: 19px;
             font-size: 18px;
             font-family: PingFang SC;
             font-weight: 800;
             color: #b69d74;
             line-height: 54px;
+            text-align: center;
           }
         }
       }

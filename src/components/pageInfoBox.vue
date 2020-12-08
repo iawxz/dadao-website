@@ -1,8 +1,10 @@
 <template>
   <div class="infobox">
     <div class="codeBox">
-      <p>● 关注我们 ●</p>
-      <img class="QRcode" src="../assets/0_common/QRcode.png" alt="" />
+      <p><span>● </span>关注我们<span> ●</span></p>
+      <div class="QRbox">
+        <img class="QRcode" src="../assets/0_common/QRcode.png" alt="" />
+      </div>
     </div>
     <div class="iconBox">
       <img
@@ -11,7 +13,7 @@
         style="width: 46px; height: 36px"
         alt=""
       />
-      <p>邮箱：hzyj_51hm@163.com</p>
+      <p>邮箱：postmaster@dadaoqiyun.com</p>
     </div>
     <div class="iconBox">
       <img
@@ -43,13 +45,21 @@ export default {
   margin-top: 60px;
   margin-left: 357px;
   .codeBox {
-    .QRcode {
-      width: 140px;
-      height: 140px;
-      display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .QRbox {
+      border: 3px solid #B69D74;
       margin-bottom: 26px;
+      .QRcode {
+        width: 140px;
+        height: 140px;
+        display: block;        
+      }
     }
-    p{
+
+    p {
       width: 140px;
       text-align: center;
       margin-bottom: 20px;
@@ -58,10 +68,17 @@ export default {
       font-weight: bold;
       color: #000000;
       opacity: 0.7;
+      span{
+        color: #B69D74;
+      }
     }
   }
 
   .iconBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin-bottom: 26px;
     .icon {
       display: block;

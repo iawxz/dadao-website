@@ -7,8 +7,9 @@
       <div class="intro LR_layout" v-if="selectIndex == 0">
         <div class="left">
           <div class="title">
-            <p>Craftsmanship<br />and quality</p>
-            <p>匠心千里，品质百代</p>
+            <img src="../assets/7_contact/dadao_logo.png" alt="">
+            <p class="left_en">Craftsmanship and quality</p>
+            <p class="left">匠心千里，品质百代</p>
           </div>
         </div>
         <div class="splitline"></div>
@@ -45,8 +46,9 @@
       <div class="philosophy LR_layout" v-if="selectIndex == 1">
         <div class="left">
           <div class="title">
-            <p>Craftsmanship<br />and quality</p>
-            <p>匠心千里，品质百代</p>
+            <img src="../assets/7_contact/dadao_logo.png" alt="">
+           <p class="left_en">Craftsmanship and quality</p>
+            <p class="left">匠心千里，品质百代</p>
           </div>
         </div>
         <div class="splitline"></div>
@@ -125,29 +127,38 @@ export default {
     .left {
       width: 40%;
       .title {
-        margin-top: 60px;
-        margin-left: 357px;
-        p:first-child {
-          width: 194px;
-          height: 56px;
-          font-size: 24px;
-          font-family: Roboto;
-          font-weight: bold;
-          color: #616161;
-          line-height: 36px;
-          opacity: 0.2;
-          // margin-bottom: 20px;
+          margin-top: 60px;
+          margin-left: 357px;
+          img{
+            width: 246px;
+            height: 94px;
+            display: block;
+            margin: 0 auto;
+          }
+          p.left_en {
+            // width: 194px;
+            height: 56px;
+            font-size: 24px;
+            font-family: Roboto;
+            font-weight: bold;
+            color: #616161;
+            line-height: 36px;
+            opacity: 0.2;
+            margin-top: 34px;
+            margin-bottom: 20px;
+            text-align: center;
+          }
+          p.left {
+            width: 100%;
+            height: 19px;
+            font-size: 18px;
+            font-family: PingFang SC;
+            font-weight: 800;
+            color: #b69d74;
+            // line-height: 54px;
+            text-align: center;
+          }
         }
-        p:nth-child(2) {
-          width: 171px;
-          height: 19px;
-          font-size: 18px;
-          font-family: PingFang SC;
-          font-weight: 800;
-          color: #b69d74;
-          line-height: 54px;
-        }
-      }
     }
     .splitline {
       position: absolute;
