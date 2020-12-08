@@ -48,9 +48,7 @@
         <div class="headline" @click="goNews(headline)">
           <p class="title">{{ headline.title }}</p>
           <p class="time">{{ headline.create_time }}</p>
-          <p class="content">
-            {{ headline.text }}
-          </p>
+          <p class="content" v-html="headline.text"></p>
         </div>
         <div class="splitline_y"></div>
         <div class="newsBox">
@@ -75,28 +73,48 @@
               <div class="underline" v-show="news_type == 1"></div>
             </div>
           </div>
-          <div class="newsBox" v-if="news_type == -1">
+          <div class="newsBox_con" v-if="news_type == -1">
             <div class="newsList">
-              <div class="news" v-for="(item, index) in news" :key="index" @click="goNews(item)">
-                <p>{{ item.create_time }} {{ item.title }}</p>
+              <div
+                class="news"
+                v-for="(item, index) in news"
+                :key="index"
+                @click="goNews(item)"
+              >
+                <p>
+                  <span>{{ item.create_time }}</span>{{ item.title }}
+                </p>
               </div>
             </div>
           </div>
-          <div class="newsBox" v-else>
+          <div class="newsBox_con" v-else>
             <div
               class="newsList"
               :class="[news_type == '0' ? 'scrollMove_down' : 'scrollMove_up']"
             >
-              <div class="news" v-for="(item, index) in news" :key="index" @click="goNews(item)">
-                <p>{{ item.create_time }} {{ item.title }}</p>
+              <div
+                class="news"
+                v-for="(item, index) in news"
+                :key="index"
+                @click="goNews(item)"
+              >
+                <p><span>{{ item.create_time }}</span>{{ item.title }}</p>
               </div>
             </div>
             <div
               class="newsList"
               :class="[news_type == '0' ? 'scrollMove_down' : 'scrollMove_up']"
             >
-              <div class="news" v-for="(item, index) in tendency" :key="index" @click="goNews(item)">
-                <p>{{ item.create_time }} {{ item.title }}</p>
+              <div
+                class="news"
+                v-for="(item, index) in tendency"
+                :key="index"
+                @click="goNews(item)"
+              >
+                <p>
+                  <span>{{ item.create_time }}</span
+                  >{{ item.title }}
+                </p>
               </div>
             </div>
           </div>
@@ -260,12 +278,12 @@ export default {
       });
     },
     // 前往新闻页
-    goNews(item){
+    goNews(item) {
       var pageitem = {
         name: "News",
         url: "/news",
         index: 5,
-        item
+        item,
       };
       this.$refs.borrow.goPage_News(pageitem);
     },
@@ -357,14 +375,16 @@ export default {
       background: #b69d74;
     }
     .infoBox {
-      height: 283px;
+      height: 230px;
+      padding-top: 53px;
+
       background-image: url(../assets/1_home/info_back.png);
       background-position: center;
       background-repeat: repeat;
       background-size: 113%;
 
       display: flex;
-      align-items: center;
+      // align-items: center;
       justify-content: center;
 
       .splitline_y {
@@ -392,11 +412,10 @@ export default {
         cursor: pointer;
         .title {
           width: 354px;
-          font-size: 24px;
+          font-size: 20px;
           font-family: PingFang SC;
           font-weight: bold;
           color: #000000;
-          line-height: 40px;
           opacity: 0.85;
 
           text-overflow: ellipsis;
@@ -404,11 +423,11 @@ export default {
           white-space: nowrap;
         }
         .time {
-          font-size: 24px;
+          font-size: 18px;
           font-family: Roboto;
           font-weight: 500;
           color: #666666;
-          line-height: 40px;
+          margin: 10px 0 20px;
           opacity: 0.6;
         }
         .content {
@@ -425,6 +444,7 @@ export default {
           display: -webkit-box;
         }
       }
+
       .newsBox {
         .type {
           display: flex;
@@ -450,10 +470,20 @@ export default {
             color: rgba($color: #262626, $alpha: 0.7);
           }
         }
-        .newsBox {
-          width: 310px;
+        .newsBox_con {
+          width: 360px;
           height: 120px;
           overflow: hidden;
+          p {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            span {
+              display: inline-block;
+              margin-right: 15px;
+            }
+          }
           .newsList {
             width: 100%;
             font-size: 16px;
@@ -461,16 +491,10 @@ export default {
             font-weight: 500;
             color: #666666;
             line-height: 31px;
-            p {
-              width: 100%;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-            .news{
+            .news {
               cursor: pointer;
             }
-            .news:hover{
+            .news:hover {
               color: #b69d74;
             }
           }

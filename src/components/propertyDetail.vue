@@ -213,6 +213,7 @@ export default {
       position: relative;
       overflow: hidden;
       img {
+        cursor: pointer;
         width: 705px;
         height: auto;
         position: absolute;

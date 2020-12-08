@@ -20,7 +20,7 @@
               <div class="newsTime">{{ item.create_time }}</div>
               <div class="newsText">
                 <p>{{ item.title }}</p>
-                <p>{{ item.text }}</p>
+                <p v-html="item.text"></p>
               </div>
             </div>
             <div class="getMoreNews" @click="getMore" v-if="isShow">
@@ -33,8 +33,8 @@
           <div class="newsDetail" v-else>
             <div class="goLists" @click="goLists"><<<返回列表</div>
             <div class="titleBox">
-              <p class="newsTime">{{newsDetail.create_time}}</p>
-              <p class="newsTitle">{{newsDetail.title}}</p>
+              <p class="newsTime">{{ newsDetail.create_time }}</p>
+              <p class="newsTitle" v-html="newsDetail.title"></p>
             </div>
             <div class="imgTextBox" v-html="newsDetail.content"></div>
           </div>
@@ -55,14 +55,14 @@ export default {
       navIndex: this.$route.params.navIndex,
       selectIndex: 0, //默认为0
       newslist: [],
-      newsDetail:[],
+      newsDetail: [],
       isDetail: false, //是否展示新闻详情页
       newsImg: [
         require("../assets/5_news/newsImg1.png"),
         require("../assets/5_news/newsImg2.png"),
         require("../assets/5_news/newsImg3.png"),
       ],
-      showLength: 3,
+      showLength: 10,
       isShow: true,
     };
   },
@@ -74,10 +74,10 @@ export default {
   mounted() {
     this.getNews();
   },
-  created () {
-    if(this.$route.params.newsDetail){      
-      this.isDetail = true
-      this.newsDetail = this.$route.params.newsDetail
+  created() {
+    if (this.$route.params.newsDetail) {
+      this.isDetail = true;
+      this.newsDetail = this.$route.params.newsDetail;
       var content = this.newsDetail.content.replace(
         /<img [^>]*src=['"]([^'"]+)[^>]*>/gi,
         function (match, capture) {
@@ -87,8 +87,11 @@ export default {
           );
         }
       );
-      this.newsDetail.content = content;      
+      this.newsDetail.content = content;
     }
+  },
+  activated() {
+    document.getElementsByClassName("news").scrollTop = 0;
   },
   methods: {
     getSelectIndex(index) {
@@ -124,6 +127,7 @@ export default {
     },
     // 查看新闻详情
     goDetail(item) {
+      window.pageYOffset = document.documentElement.scrollTop = document.body.scrollTop = 0;
       this.isDetail = true;
       this.newsDetail = item;
 
@@ -285,7 +289,9 @@ export default {
         .imgTextBox {
           width: 100%;
           margin-top: 15px;
-          ::v-deep img{width: 100%;}
+          ::v-deep img {
+            width: 100%;
+          }
         }
       }
     }

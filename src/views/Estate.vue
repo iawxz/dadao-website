@@ -43,7 +43,7 @@
               <p>
                 地块总用地面积13741平方米，用地性质为商业金融业、文化娱乐用地。建筑高度150米。
               </p>
-              <div class="img"></div>
+              <div class="img img_build"></div>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
                 稻集团充分发挥综合性地产开发优势，以自身标志性项目和现代服务业集聚区为阵地，在自身商业品
                 牌独立运营及自主品牌建设的同时，积极寻求与国际国内知名企业的战略合作，借力发展，合作共赢。
               </p>
-              <div class="img"></div>
+              <div class="img img_invest"></div>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@
                 VIP就医服务体系，提供包括专属预约分诊、专属名医预约、专属导医陪护、专属专家会诊、专属住院
                 管家、专属名医上门、专属药物代寄、配送在内的VIP专属就医服务。
               </p>
-              <div class="img"></div>
+              <div class="img img_health"></div>
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
               <p>
                 结合国内外顶尖艺术家及设计师力量，为本地社区提供优质的人文艺术环境。
               </p>
-              <div class="img"></div>
+              <div class="img img_art"></div>
             </div>
           </div>
         </div>
@@ -501,6 +501,22 @@ export default {
               background-position: center;
               background-size: cover;
               background-repeat: no-repeat;
+            }
+            .img_build{
+              height: 460px;
+              background-image: url("../assets/3_estate/build.png");
+            }
+            .img_invest{
+              height: 450px;
+              background-image: url("../assets/3_estate/invest.png");
+            }            
+            .img_health{
+              height: 542px;
+              background-image: url("../assets/3_estate/health.jpg");
+            }
+            .img_art{
+              height: 396px;
+              background-image: url("../assets/3_estate/art.png");
             }
           }
         }

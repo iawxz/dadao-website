@@ -63,9 +63,8 @@ Vue.use(pageFooter)
 import pageFooter_M from './components/pageFooter_M'
 Vue.use(pageFooter_M)
 
-
-
 Vue.config.productionTip = false
+
 
 new Vue({
   router,

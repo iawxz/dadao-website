@@ -84,6 +84,8 @@ export default {
   },
   props: ['isScroll'],
   components: {},
+  created () {
+  },
   mounted() {
     var path_arr = window.location.href.split('/')
     var path_length = path_arr.length

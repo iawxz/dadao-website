@@ -17,13 +17,25 @@
             <div class="title">关于大稻启运</div>
             <div class="title_EN">about da dao qi yun</div>
             <div class="text">
-              <p>大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。</p>
               <p>
-                大稻启运定位于“成为城市商业，产业服务的一流供应商。”核心业务包括地产开发、工程建设、产业
-                投资、高端医疗及艺术投资。
+                大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。<br />
+                核心业务涵盖房地产综合开发、商业地产运营、产业地产运营、物业服务管理、工程建设管理、科技
+                产业投资、高端医疗管理、文化艺术投资等领域。在不断深化发展创新的理念下，大稻启运积极拓展
+                业务版图，使其经济实力和区域影响力不断地快速提升。<br />
+                大稻启运集团定位于“成为中国领先的城市及产业运营商”，以“投资开发”、“运营服务”为两大业务
+                战略。目前，集团已开发超5A级写字楼、产业园、高端住宅、精品酒店式公寓等多个核心区域优质项
+                目，并赢得市场青睐。为巩固生态运服业务优势，大稻启运集团推出了五个核心概念作为自身的运营
+                模式:商业价值、社区整合、教育共享、健康服务、生态艺术。专注打造可持续的商业和生活空间。
               </p>
               <p>
-                在多元化的经营理念下，大稻启运积极拓展业务版图，使其经济实力和区域影响力不断地快速提升。
+                <span>商业价值：</span>创造共赢的商业纽带<br />
+                <span>社区整合：</span
+                >提供基于场景化、体验化、社群化下的多元空间服务<br />
+                <span>教育共享：</span>提供并创新运营服务与客户共发展<br />
+                <span>健康服务：</span
+                >为客户创造精准的健康绿色通道及健康办公模式<br />
+                <span>生态艺术：</span
+                >通过艺术促进商务及居住关系的和谐发展<br />
               </p>
             </div>
           </div>
@@ -50,7 +62,7 @@
       </div>
       <!-- 企业架构 -->
       <div class="architecture" v-else-if="selectIndex == 2">
-        <div class="architectureImg"></div>        
+        <div class="architectureImg"></div>
       </div>
     </div>
     <pageFooter></pageFooter>
@@ -101,10 +113,10 @@ export default {
 .about {
   height: 100%;
 }
-.content {  
+.content {
   .LR_layout {
     width: 100%;
-    height: 600px;
+    min-height: 700px;
     position: relative;
     display: flex;
     // align-items: baseline;
@@ -173,7 +185,7 @@ export default {
           margin-bottom: 39px;
         }
         .text {
-          width: 755px;
+          width: 700px;
           height: 17px;
           font-size: 16px;
           font-family: PingFang SC;
@@ -183,6 +195,9 @@ export default {
           opacity: 0.7;
           p {
             margin-bottom: 30px;
+            span {
+              color: #b69d74;
+            }
           }
         }
       }
@@ -192,6 +207,7 @@ export default {
         display: flex;
         .list {
           margin-right: 43px;
+          margin-bottom: 70px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -220,12 +236,12 @@ export default {
       }
     }
   }
-  .architecture{
+  .architecture {
     text-align: center;
-    .architectureImg{
+    .architectureImg {
       width: 100%;
       height: 800px;
-      background-image: url('../assets/2_about/architecture.png');
+      background-image: url("../assets/2_about/architecture.png");
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100%;
