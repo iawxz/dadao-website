@@ -52,6 +52,7 @@ export default {
     .QRbox {
       border: 3px solid #B69D74;
       margin-bottom: 26px;
+      padding: 3px;
       .QRcode {
         width: 140px;
         height: 140px;

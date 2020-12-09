@@ -122,7 +122,7 @@ export default {
             font-family: PingFang SC;
             font-weight: 800;
             color: #b69d74;
-            line-height: 54px;
+            // line-height: 54px;
             text-align: center;
           }
         }
