@@ -1,7 +1,7 @@
 <template>
   <div class="infobox">
     <div class="codeBox">
-      <p><span>● </span>关注我们<span> ●</span></p>
+      <p><span></span>关注我们<span></span></p>
       <div class="QRbox">
         <img class="QRcode" src="../assets/0_common/QRcode.png" alt="" />
       </div>
@@ -69,8 +69,16 @@ export default {
       font-weight: bold;
       color: #000000;
       opacity: 0.7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       span{
-        color: #B69D74;
+        display: block;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        margin: 0 10px;
+        background-color: #B69D74;
       }
     }
   }

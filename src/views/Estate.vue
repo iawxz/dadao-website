@@ -1,7 +1,11 @@
 <template>
   <div class="estate">
     <pageHeader></pageHeader>
-    <pageNav :navIndex="navIndex" :sendSelect="selectIndex" @send="getSelectIndex"></pageNav>
+    <pageNav
+      :navIndex="navIndex"
+      :sendSelect="selectIndex"
+      @send="getSelectIndex"
+    ></pageNav>
     <div class="content">
       <!-- 大稻地产 -->
       <div class="property" v-if="selectIndex == 0">
@@ -12,10 +16,12 @@
             :key="index"
             @click="goDetail(item)"
           >
-            <img :src="item.img || item.titleimg" alt="" />
+            <div
+              class="propertyImg"
+              :style="{ backgroundImage: 'url(' + item.titleimg + ')' }"
+            ></div>
+            <!-- <img :src="item.titleimg" alt="" /> -->
             <p class="name">{{ item.name || item.title }}</p>
-            <p class="usefor">项目用途：{{ item.usefor || item.category }}</p>
-            <p class="address">项目地址：{{ item.address }}</p>
           </div>
         </div>
         <propertyDetail
@@ -25,28 +31,17 @@
         ></propertyDetail>
       </div>
       <!-- 大稻建设 -->
-      <div class="build LR_layout" v-if="selectIndex == 1">
-        <div class="left">
-          <pageInfoBox></pageInfoBox>
-        </div>
-        <div class="splitline"></div>
-        <div class="right">
-          <div class="infoBox">
-            <p class="title">大稻建设</p>
-            <p class="title_EN">DA DAO CONSTRUCTION</p>
-            <div class="essay">
-              <p class="subtitle">巨门项目</p>
-              <p>
-                本项目位于杭州萧山区钱江世纪城核心区域，东北侧为规划的亚运村，周边拟建大量超高层办公楼及
-                大型居住小区。
-              </p>
-              <p>
-                地块总用地面积13741平方米，用地性质为商业金融业、文化娱乐用地。建筑高度150米。
-              </p>
-              <div class="img img_build"></div>
-            </div>
+      <div class="build" v-if="selectIndex == 1">
+        <div class="build_content">
+          <div class="build_title">大稻建设</div>
+          <div class="build_title_EN">DA DAO CONSTRUCTION</div>
+          <div class="build_text">
+            大稻建设是由大稻启运下属商业管理公司为主体推出的轻资产战略平台，大稻启运精耕商业地产十数年，
+            依托专业的商业开发及运营管理团队实现商业地产代建、代运营业务的延伸，从甲方思维转换到管理人和服务者思维，对外实施商业开发品牌输出和建设运营管理输出，与外部机构开展项目合作开发，形成“土地资源委托代建”、“投资资本委托代建”和“政府委托代建”三大业务模式。建设类型涉及商业办公、产业园区、文旅商业及商业综合体项目。
+            项目代建业务的基本模式是合作双方签约委托大稻启运集团进行开发销售环节的全过程管理，提供项目定位、规划设计、工程管理、成本管理、招投标管理、营销管理、品牌管理、竣工交付管理及物业管理等开发全过程服务。
           </div>
         </div>
+        <img class="build_img" src="../assets/3_estate/build.png" alt="" />
       </div>
       <!-- 产业投资 -->
       <div class="invest LR_layout" v-if="selectIndex == 2">
@@ -54,12 +49,29 @@
           <pageInfoBox></pageInfoBox>
         </div>
         <div class="splitline"></div>
-        <div class="right">
-          <div class="infoBox">
+        <div class="right" v-if="investIndex == -1">
+          <div class="infoNav">
             <p class="title">产业投资</p>
             <p class="title_EN">INDUSTRY INVESTMENT</p>
+            <div class="navBox">
+              <div class="nav" @click="investGo(0)">
+                <img src="../assets/3_estate/invest1.png" alt="恒领产业园" />
+                <p>恒领产业园</p>
+              </div>
+              <div class="nav" @click="investGo(1)">
+                <img
+                  src="../assets/3_estate/invest2.png"
+                  alt="大稻医疗健康产业园"
+                />
+                <p>大稻医疗健康产业园</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right" v-else-if="investIndex == 0">
+          <div class="infoBox">
             <div class="essay">
-              <p class="subtitle">恒领科技产业园</p>
+              <p class="subtitle" @click="investGo(-1)"><<<恒领科技产业园</p>
               <p>
                 本项目南至机场高速路，西至新城路，北侧为规划道路。地块总用地面积13362平方米，建筑高度
                 100米。
@@ -73,18 +85,12 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- 大健康 -->
-      <div class="health LR_layout" v-if="selectIndex == 3">
-        <div class="left">
-          <pageInfoBox></pageInfoBox>
-        </div>
-        <div class="splitline"></div>
-        <div class="right">
+        <div class="right" v-else-if="investIndex == 1">
           <div class="infoBox">
-            <p class="title">大健康产业</p>
-            <p class="title_EN">HEALTH INDUSTRY</p>
             <div class="essay">
+              <p class="subtitle" @click="investGo(-1)">
+                <<<大稻医疗健康产业园
+              </p>
               <p>
                 浙江大稻健康科技有限公司成立于2014年。公司集国内、外流的医疗资源为有健康需求的精英人士提
                 供健康管理、海外医疗、体检全程咨询与服务的专业机构。
@@ -104,26 +110,71 @@
           </div>
         </div>
       </div>
-      <!-- 文化艺术 -->
-      <div class="art LR_layout" v-if="selectIndex == 4">
+      <!-- 大健康 -->
+      <div class="health" v-if="selectIndex == 3">
         <div class="left">
-          <pageInfoBox></pageInfoBox>
+          <img src="../assets/3_estate/heath_left.png" alt="" />
         </div>
-        <div class="splitline"></div>
+        <div class="right">
+          <div class="essay">
+            <p class="title">大健康企业</p>
+            <p class="title_EN">HEALTH INDUSTRY</p>
+            <div class="health_outer">
+              <div class="health_inner">
+                <p>
+                  浙江大稻健康科技有限公司隶属于浙江大稻集团有限公司，是浙江省最早成立的专业健康管理服务公司之一，是一家专业提供一站式个性化高端健康管理服务的公司，是浙江省高端健康服务行业标杆企业。
+                </p>
+                <p>
+                  浙江大稻健康科技有限公司秉承“做客户身边值得信赖的健康管家”的服务理念，整合顶级医疗资源，提供系统化顶级医疗服务。以“检测、诊断、干预、评估”的服务模式，为个人、家庭、企业、金融机构等企业单位提供综合性的健康管理服务。
+                </p>
+                <p class="service_title">服务内容</p>
+                <p class="serviceBox">
+                  <b>VIP尊享服务</b>
+                  <br />大稻健康为每位高净值尊贵客户提供VIP尊享服务。
+                </p>
+                <p class="serviceBox">
+                  <b>健康管理解决方案</b>
+                  <br />大稻健康为企事业单位提供个性化的健康管理解决方案，让企事业员工可以亲临体验一站式、全方位、专业化顾问式服务的理念和水准。
+                </p>
+                <p class="serviceBox">
+                  <b>海外健检医疗</b>
+                  <br />大稻健康汇集美国、日本、台湾、新加坡等多个国家和地区首屈一指的世界级顶级医疗机构和临床专家资源，为您量身定制一站式海外就医服务。
+                </p>
+                <p class="serviceBox">
+                  <b>体检服务</b>
+                  <br />大稻健康建立了以三甲医院为主导，商业体检中心为辅的全国性体检服务平台，提供检前咨询、体检套餐设计、体检预约、陪检、检后报告解读、健康评估等全方位的服务。
+                </p>
+                <p class="serviceBox">
+                  <b>就医协助服务</b>
+                  <br />大稻健康为每一位会员提供类健康管家的一站式就医协助服务，帮助会员解决就医过程中遇到的各种琐碎问题。
+                </p>
+                <p class="serviceBox">
+                  <b>私属健康团队</b>
+                  <br />大稻健康的每一位会员都配属由全科医生、营养师、健康管家组成的健康管理团队，提供全方位的健康管理服务。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 文化艺术 -->
+      <div class="art" v-if="selectIndex == 4">
+        <div class="left">
+          <div class="leftBox">
+            <p class="title">ART</p>
+            <p class="text">艺术能抵达更美好的未来</p>
+            <img src="../assets/3_estate/art.png" alt="" />
+          </div>
+        </div>
         <div class="right">
           <div class="infoBox">
             <p class="title">文化艺术</p>
             <p class="title_EN">CULTURE AND ART</p>
             <div class="essay">
-              <p>
-                大稻文化专注于提升地产艺术形象及为开发商提供创新的艺术营销策划服务，坚守美学信仰，以艺术
-                的载体追求本真，让建筑与自然、与艺术、与文化精神往来，旨在创造出充分体现生活感受和艺术价
-                值的人居生活。
-              </p>
-              <p>
-                结合国内外顶尖艺术家及设计师力量，为本地社区提供优质的人文艺术环境。
-              </p>
-              <div class="img img_art"></div>
+              艺术，是想象力的源泉，它为人类插上翅膀，把我们带到很远的地方。
+              人类的真正感情、内心生活的奥秘和对世界的热情，也都藏身于艺术。
+              我们都希望艺术最终抵达的不是另一个艺术，而是直抵自己内在真诚、善好、柔软的内心。<br />
+              大稻启运在艺术投资领域与世界知名画廊、艺术机构、艺术家建立合作，期望通过艺术品投资收藏、艺术展览空间以及艺术沙龙活动，构建起高端艺术鉴赏与交流的平台。
             </div>
           </div>
         </div>
@@ -146,6 +197,7 @@ export default {
       property: [],
       propertyDetail: {},
       isDetail: false, //是否为项目详情页，默认为false
+      investIndex: -1, //投资模块index，0恒领，1大医疗
     };
   },
   props: {},
@@ -157,12 +209,16 @@ export default {
   mounted() {
     this.getProperty();
   },
-  created () {
-    if(this.$route.params.selectIndex){
-      this.selectIndex = this.$route.params.selectIndex      
-    }    
+  created() {
+    if (this.$route.params.selectIndex) {
+      this.selectIndex = this.$route.params.selectIndex;
+    }
   },
   methods: {
+    // 产业投资跳转子页面
+    investGo(index) {
+      this.investIndex = index;
+    },
     getSelectIndex(index) {
       this.selectIndex = index;
     },
@@ -189,6 +245,7 @@ export default {
       });
     },
     goDetail(item) {
+      console.log(item);
       if (!this.isDetail) {
         this.isDetail = true;
         this.propertyDetail = item;
@@ -229,8 +286,8 @@ export default {
     .property {
       width: 100%;
       .propertyLists {
-        width: 1230px;
-        height: 874px;
+        width: 1330px;
+        // height: 874px;
         margin: 60px auto;
         display: flex;
         // align-items: center;
@@ -239,10 +296,17 @@ export default {
         .propertyList {
           cursor: pointer;
           margin: 0 15px 40px;
-          img {
-            width: 380px;
-            height: 220px;
+          .propertyImg {
+            width: 300px;
+            height: 400px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
           }
+          // img {
+          //   width: 380px;
+          //   height: 220px;
+          // }
           p {
             font-size: 16px;
             font-family: Microsoft YaHei;
@@ -252,10 +316,11 @@ export default {
             margin-bottom: 8px;
           }
           .name {
-            font-size: 20px;
+            text-align: center;
+            font-size: 16px;
             font-family: PingFang SC;
             font-weight: 800;
-            color: #b69d74;
+            color: #201816;
             margin-top: 16px;
             margin-bottom: 10px;
           }
@@ -435,6 +500,162 @@ export default {
         }
       }
     }
+    .build {
+      width: 1330px;
+      margin: 60px auto;
+      display: flex;
+      justify-content: center;
+      .build_content {
+        padding-right: 45px;
+        margin-bottom: 160px;
+        font-family: "新宋体";
+        font-weight: bold;
+        color: #6a6a6a;
+        .build_title {
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        .build_title_EN {
+          font-size: 20px;
+          margin-bottom: 30px;
+        }
+        .build_text {
+          font-size: 18px;
+          line-height: 35px;
+        }
+      }
+      .build_img {
+        display: block;
+        width: 500px;
+        height: 300px;
+        margin-top: 100px;
+      }
+    }
+    .health {
+      display: flex;
+      .left {
+        width: 40%;
+        border-right: 2px solid #efefef;
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 30px;
+        img {
+          width: 410px;
+          height: 447px;
+          display: block;
+          margin-top: 60px;
+        }
+      }
+      .right {
+        width: 60%;
+        .essay {
+          margin-top: 60px;
+          margin-left: 30px;
+          margin-bottom: 60px;
+          .title {
+            font-size: 22px;
+            font-weight: bold;
+            font-family: "宋体";
+            color: #808080;
+            margin-bottom: 5px;
+          }
+          .title_EN {
+            font-size: 18px;
+            margin-bottom: 30px;
+          }
+          .health_outer,
+          .health_inner {
+            width: 700px;
+            height: 500px;
+          }
+          .health_outer {
+            position: relative;            
+            overflow: hidden;
+            margin-left: -20px;
+            .health_inner {
+              position: absolute;              
+              right: -20px;
+              overflow: auto;
+              
+              font-family: "宋体";
+              line-height: 35px;
+              font-size: 20px;
+              color: #505050;
+              .service_title{
+                font-size: 24px;
+                font-weight: bold;
+                color: #a5a5a5;
+                margin-top: 30px;
+              }
+              .serviceBox{
+                margin-top: 30px;
+                font-size: 18px;
+                color: #505050;
+                b{
+                  color: #606060;                  
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .art {
+      display: flex;
+      font-family: "宋体";
+      .left {
+        position: relative;
+        width: 40%;
+        color: #3c3c3c;
+        .leftBox {
+          position: absolute;
+          right: 0;
+          width: 70%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          font-weight: bold;
+          padding-top: 60px;
+          padding-bottom: 30px;
+          border-right: 2px solid #efefef;
+          .title {
+            font-size: 66px;
+          }
+          .text {
+            font-size: 26px;
+            margin: 20px 0 20px;
+          }
+          img {
+            width: 450px;
+            height: 250px;
+          }
+        }
+      }
+      .right {
+        margin-top: 60px;
+        margin-left: 40px;
+        width: 60%;
+        color: #5a5a5a;
+        font-size: 24px;
+
+        .title {
+          font-size: 30px;
+          font-weight: bold;
+        }
+        .title_EN {
+          font-size: 16px;
+          font-weight: bold;
+          margin: 10px 0 50px;
+        }
+        .essay {
+          color: #101010;
+          width: 65%;
+          line-height: 40px;
+          margin-bottom: 150px;
+        }
+      }
+    }
     .LR_layout {
       width: 100%;
       position: relative;
@@ -476,11 +697,11 @@ export default {
           }
           .essay {
             .subtitle {
+              cursor: pointer;
               font-size: 20px;
               font-family: PingFang SC;
               font-weight: bold;
               color: #616161;
-              line-height: 54px;
               opacity: 0.9;
               margin-bottom: 18px;
             }
@@ -502,21 +723,51 @@ export default {
               background-size: cover;
               background-repeat: no-repeat;
             }
-            .img_build{
+            .img_build {
               height: 460px;
               background-image: url("../assets/3_estate/build.png");
             }
-            .img_invest{
+            .img_invest {
               height: 450px;
-              background-image: url("../assets/3_estate/invest.png");
-            }            
-            .img_health{
-              height: 542px;
-              background-image: url("../assets/3_estate/health.jpg");
+              background-image: url("../assets/3_estate/invest_tech.png");
             }
-            .img_art{
+            .img_health {
+              height: 542px;
+              background-image: url("../assets/3_estate/invest_health.jpg");
+            }
+            .img_art {
               height: 396px;
               background-image: url("../assets/3_estate/art.png");
+            }
+          }
+        }
+        .infoNav {
+          margin: 60px 0 120px 30px;
+          .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #b69d74;
+          }
+          .title_EN {
+            font-size: 12px;
+            font-weight: bold;
+            color: #cecece;
+          }
+          .navBox {
+            margin-top: 40px;
+            display: flex;
+            .nav {
+              margin-right: 60px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              p {
+                font-size: 15px;
+                margin-top: 15px;
+              }
             }
           }
         }

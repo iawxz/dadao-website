@@ -3,68 +3,83 @@
     <pageHeader></pageHeader>
     <pageNav :navIndex="navIndex" @send="getSelectIndex"></pageNav>
     <div class="content">
-      <!-- 企业介绍 -->
-      <div class="intro LR_layout" v-if="selectIndex == 0">
+      <div class="LR_layout">
         <div class="left">
-          <div class="title">
-            <img src="../assets/7_contact/dadao_logo.png" alt="">
-            <p class="left_en">Craftsmanship and quality</p>
-            <p class="left">匠心千里，品质百代</p>
+          <div class="leftBox">
+            <p class="title_EN">SERVICE</p>
+            <p class="title">大稻启运<br />做商业运营的钟表匠</p>
+            <img src="../assets/0_common/leftBox.png" alt="" />
           </div>
         </div>
-        <div class="splitline"></div>
-        <div class="right">
+        <!-- 企业介绍 -->
+        <div class="right" v-if="selectIndex == 0">
           <div class="essay">
-            <div class="title">关于大稻启运</div>
-            <div class="title_EN">about da dao qi yun</div>
+            <div class="title">关于我们</div>
+            <div class="title_EN">ABOUT US</div>
             <div class="text">
               <p>
-                大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。<br />
-                核心业务涵盖房地产综合开发、商业地产运营、产业地产运营、物业服务管理、工程建设管理、科技
-                产业投资、高端医疗管理、文化艺术投资等领域。在不断深化发展创新的理念下，大稻启运积极拓展
-                业务版图，使其经济实力和区域影响力不断地快速提升。<br />
+                大稻启运最早成立于2007年,
+                总部坐落在美丽的杭州钱塘江畔。核心业务涵盖房地产综合开发、商业地产运营、产业地产运营、物业服务管理、工程建设管理、科技
+                产业投资、高端医疗管理、文化艺术投资等领域。在不断深化发展创新的理念下，大稻启运积极拓展业务板块，经济实力和区域影响力不断地快速提升。<br />
                 大稻启运集团定位于“成为中国领先的城市及产业运营商”，以“投资开发”、“运营服务”为两大业务
                 战略。目前，集团已开发超5A级写字楼、产业园、高端住宅、精品酒店式公寓等多个核心区域优质项
                 目，并赢得市场青睐。为巩固生态运服业务优势，大稻启运集团推出了五个核心概念作为自身的运营
                 模式:商业价值、社区整合、教育共享、健康服务、生态艺术。专注打造可持续的商业和生活空间。
               </p>
+            </div>
+          </div>
+        </div>
+        <!-- 企业理念 -->
+        <div class="right" v-else-if="selectIndex == 1">
+          <div class="essay essay_img" v-if="departmentStatus == -1">
+            <div class="imgBox">
+              <img src="../assets/2_about/1.png" alt="组织架构" />
+              <div class="navBox">
+                <img src="../assets/2_about/2.png" alt="9大运营中心" />
+                <div
+                  class="nav"
+                  v-for="(item, index) in department"
+                  :key="index"
+                  @click="goDetail(index)"
+                >
+                  {{ item.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="department" v-else>
+            <p class="back" @click="goDetail(-1)"><<<返回上一级</p>
+            <img src="../assets/2_about/department/0.png" v-if="departmentStatus==0" alt="" />
+            <img src="../assets/2_about/department/1.png" v-else-if="departmentStatus==1" alt="" />
+            <img src="../assets/2_about/department/2.png" v-else-if="departmentStatus==2" alt="" />
+            <img src="../assets/2_about/department/3.png" v-else-if="departmentStatus==3" alt="" />
+            <img src="../assets/2_about/department/4.png" v-else-if="departmentStatus==4" alt="" />
+            <img src="../assets/2_about/department/5.png" v-else-if="departmentStatus==5" alt="" />
+            <img src="../assets/2_about/department/6.png" v-else-if="departmentStatus==6" alt="" />
+            <img src="../assets/2_about/department/7.png" v-else-if="departmentStatus==7" alt="" />
+            <img src="../assets/2_about/department/8.png" v-else-if="departmentStatus==8" alt="" />
+            <!-- <img :src="departmentImg" alt="图片加载不出来"> -->
+          </div>
+        </div>
+        <!-- 企业架构 -->
+        <div class="right" v-if="selectIndex == 2">
+          <div class="essay">
+            <div class="title_EN"></div>
+            <div class="text">
               <p>
-                <span>商业价值：</span>创造共赢的商业纽带<br />
-                <span>社区整合：</span
-                >提供基于场景化、体验化、社群化下的多元空间服务<br />
-                <span>教育共享：</span>提供并创新运营服务与客户共发展<br />
-                <span>健康服务：</span
-                >为客户创造精准的健康绿色通道及健康办公模式<br />
-                <span>生态艺术：</span
-                >通过艺术促进商务及居住关系的和谐发展<br />
+                犹如艺术般的创造，对完美和极致孜孜以求，大稻启运集团，立志成为商业运营领域的钟表匠。<br />
+                <span>大</span
+                >|是秉承钱塘江大潮的精神涵养，百舸争流，力争上游，奋勇为先；是在当下的杭州勇立时代的大潮头；是对城市的大爱，以高度的社会责任感，去回馈城市的关照。<br />
+                <span>稻</span
+                >|播种，生长，到丰满的收获，走过的完整的生命，成熟饱满的稻穗低垂着头，饱含谦逊和丰硕。在江南鱼米之乡，一个稻字就是富足和充实。稻是衣食住行，民之根本，让最本真的日常生活变得美好，便近“道”矣。<br />
+                <span>启</span
+                >|是每一次启程都始终如一，以初心以百分百用心去付出。<br />
+                <span>運</span
+                >|是顺时顺势，遵循着自然的法则和生命的城市的流向，让美好可持续。<br />
               </p>
             </div>
           </div>
         </div>
-      </div>
-      <!-- 企业理念 -->
-      <div class="philosophy LR_layout" v-if="selectIndex == 1">
-        <div class="left">
-          <div class="title">
-            <img src="../assets/7_contact/dadao_logo.png" alt="">
-           <p class="left_en">Craftsmanship and quality</p>
-            <p class="left">匠心千里，品质百代</p>
-          </div>
-        </div>
-        <div class="splitline"></div>
-        <div class="right">
-          <div class="box">
-            <div class="list" v-for="(item, index) in philosophy" :key="index">
-              <img :src="item.img" alt="" />
-              <p class="title">{{ item.title }}</p>
-              <p class="text">{{ item.text }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- 企业架构 -->
-      <div class="architecture" v-else-if="selectIndex == 2">
-        <div class="architectureImg"></div>
       </div>
     </div>
     <pageFooter></pageFooter>
@@ -79,23 +94,56 @@ export default {
     return {
       navIndex: this.$route.params.navIndex,
       selectIndex: 0, //默认为0
-      philosophy: [
+      department: [
+        //9大运营中心
         {
-          img: require("../assets/2_about/icon1.png"),
-          title: "企业定位",
-          text: "成为城市商业产业服务的一流供应商。",
+          index: 0,
+          name: "百达翡丽中心-投资开发",
+          img: 'require("@/assets/2_about/department/0.png")',
         },
         {
-          img: require("../assets/2_about/icon2.png"),
-          title: "企业文化",
-          text: "与同道者同行，与同行者同享。",
+          index: 1,
+          name: "宝玑中心-设计管理",
+          img: 'require("@/assets/2_about/department/1.png")',
         },
         {
-          img: require("../assets/2_about/icon3.png"),
-          title: "企业信仰",
-          text: "真诚、专注、极致、完美",
+          index: 2,
+          name: "朗格中心-工程管理",
+          img: 'require("@/assets/2_about/department/2.png")',
+        },
+        {
+          index: 3,
+          name: "理查德米勒中心-营销客服",
+          img: 'require("@/assets/2_about/department/3.png")',
+        },
+        {
+          index: 4,
+          name: "劳力士中心-财务管理",
+          img: 'require("@/assets/2_about/department/4.png")',
+        },
+        {
+          index: 5,
+          name: "江诗丹顿中心-资产运服",
+          img: 'require("@/assets/2_about/department/5.png")',
+        },
+        {
+          index: 6,
+          name: "积家中心-物业公司",
+          img: 'require("@/assets/2_about/department/6.png")',
+        },
+        {
+          index: 7,
+          name: "爱彼中心-综合管理",
+          img: 'require("@/assets/2_about/department/7.png")',
+        },
+        {
+          index: 8,
+          name: "芝柏中心-成本管理&招采合约",
+          img: 'require("@/assets/2_about/department/8.png")',
         },
       ],
+      departmentStatus: -1, //当前运营中心状态
+      departmentImg: "", //当前运营中心图片
     };
   },
   props: {},
@@ -104,8 +152,18 @@ export default {
   },
   mounted() {},
   methods: {
+    // 获取导航栏索引
     getSelectIndex(index) {
       this.selectIndex = index;
+    },
+    // 查看运营中心详情
+    goDetail(index) {
+      this.departmentStatus = index;
+      if (index == -1) {
+        return;
+      }
+      this.departmentImg = this.department[index].img;
+      console.log(this.department[index].img);
     },
   },
 };
@@ -118,144 +176,142 @@ export default {
 .content {
   .LR_layout {
     width: 100%;
-    min-height: 700px;
     position: relative;
     display: flex;
-    // align-items: baseline;
     justify-content: space-around;
 
     .left {
       width: 40%;
-      .title {
-          margin-top: 60px;
-          margin-left: 357px;
-          img{
-            width: 246px;
-            height: 94px;
-            display: block;
-            margin: 0 auto;
-          }
-          p.left_en {
-            // width: 194px;
-            height: 56px;
-            font-size: 24px;
-            font-family: Roboto;
-            font-weight: bold;
-            color: #616161;
-            line-height: 36px;
-            opacity: 0.2;
-            margin-top: 34px;
-            margin-bottom: 20px;
-            text-align: center;
-          }
-          p.left {
-            width: 100%;
-            height: 19px;
-            font-size: 18px;
-            font-family: PingFang SC;
-            font-weight: 800;
-            color: #b69d74;
-            // line-height: 54px;
-            text-align: center;
-          }
+      position: relative;
+      .leftBox {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding-bottom: 130px;
+        p {
+          font-weight: 600;
         }
-    }
-    .splitline {
-      position: absolute;
-      left: 40%;
-      top: 0;
-      width: 2px;
-      height: 100%;
-      z-index: -1;
-      background: #efefef;
+        p.title_EN {
+          margin-bottom: 20px;
+          font-size: 70px;
+          font-family: "新宋体";
+          color: #9d9995;
+        }
+        p.title {
+          margin-bottom: 35px;
+          line-height: 50px;
+          font-size: 34px;
+          font-family: "宋体";
+          color: #2e2620;
+        }
+      }
     }
     .right {
       width: 60%;
+      overflow: hidden;
       .essay {
-        margin-top: 60px;
-        margin-left: 30px;
+        margin: 60px 0;
+        padding-left: 80px;
+        min-height: 524px;
+        border-left: 3px solid #b69d74;
         .title {
-          width: 152px;
-          height: 23px;
-          font-size: 24px;
-          font-family: PingFang SC;
-          font-weight: 800;
-          color: #b69d74;
-          line-height: 54px;
-          margin-bottom: 17px;
+          height: 30px;
+          font-size: 26px;
+          font-family: "楷体";
+          font-weight: bold;
+          color: #828387;
         }
         .title_EN {
-          width: 335px;
           height: 26px;
-          font-size: 32px;
-          font-family: Roboto;
+          font-size: 20px;
+          letter-spacing: 3px;
+          font-family: "宋体";
           font-weight: bold;
-          color: #616161;
-          line-height: 54px;
-          opacity: 0.3;
-          margin-bottom: 39px;
+          color: #828387;
+          margin-bottom: 30px;
         }
         .text {
-          width: 700px;
-          height: 17px;
-          font-size: 16px;
-          font-family: PingFang SC;
-          font-weight: bold;
-          color: #000000;
-          line-height: 31px;
-          opacity: 0.7;
+          width: 598px;
           p {
-            margin-bottom: 30px;
+            line-height: 40px;
+            font-size: 16px;
+            font-family: "宋体";
+            color: #505050;
             span {
-              color: #b69d74;
+              font-family: "楷体";
+              font-size: 28px;
+              font-weight: bold;
             }
           }
         }
       }
-      .box {
-        margin-top: 60px;
-        margin-left: 30px;
-        display: flex;
-        .list {
-          margin-right: 43px;
-          margin-bottom: 70px;
+      .essay_img {
+        padding-left: 30px;
+        .imgBox {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
           img {
-            width: 60px;
-            height: 60px;
-            display: block;
+            width: 580px;
+            height: 489px;
           }
-          p.title {
-            margin-top: 9px;
-            font-size: 20px;
-            font-family: PingFang SC;
-            font-weight: 800;
-            color: #3d3d3d;
-          }
-          p.text {
-            margin-top: 19px;
-            font-size: 16px;
-            font-family: PingFang SC;
-            font-weight: bold;
-            color: #3d3d3d;
-            opacity: 0.9;
+          .navBox {
+            position: relative;
+            .nav {
+              position: absolute;
+              top: 80px;
+              left: 20px;
+              cursor: pointer;
+              width: 150px;
+              height: 90px;
+              // border: 1px solid red;
+              opacity: 0;
+            }
+            .nav:nth-child(3) {
+              left: 190px; //20+150+20
+            }
+            .nav:nth-child(4) {
+              left: 360px; //190+150+20
+            }
+            .nav:nth-child(5) {
+              top: 200px; //80+90+30
+            }
+            .nav:nth-child(6) {
+              left: 190px;
+              top: 200px;
+            }
+            .nav:nth-child(7) {
+              left: 360px;
+              top: 200px;
+            }
+            .nav:nth-child(8) {
+              top: 320px; //200+90+30
+            }
+            .nav:nth-child(9) {
+              left: 190px;
+              top: 320px;
+            }
+            .nav:nth-child(10) {
+              left: 360px;
+              top: 320px;
+            }
           }
         }
       }
-    }
-  }
-  .architecture {
-    text-align: center;
-    .architectureImg {
-      width: 100%;
-      height: 800px;
-      background-image: url("../assets/2_about/architecture.png");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 100%;
+      .department {
+        margin: 60px 0;
+        padding-left: 30px;      
+        border-left: 3px solid #b69d74;
+        .back {
+          cursor: pointer;
+          font-size: 20px;
+          font-family: PingFang SC;
+          font-weight: bold;
+          color: #616161;
+          margin-bottom: 25px;
+        }
+        img {
+          width: 80%;
+        }
+      }
     }
   }
 }

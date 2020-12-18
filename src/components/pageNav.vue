@@ -2,11 +2,6 @@
   <div class="pageNav">
     <div class="back">
       <img src="../assets/0_common/page_nav_back_L.png" alt="" />
-      <div class="backText">
-        <p>以品质为第一</p>
-        <p>专注做精致服务</p>
-        <p>打造美好新生活</p>
-      </div>
     </div>
     <div
       class="navBox"
@@ -64,7 +59,7 @@ export default {
         {
           index: 2,
           name: "走进大稻",
-          listName: ["企业介绍", "企业理念", "企业架构"],
+          listName: ["企业介绍", "企业理念", "企业愿景"],
         },
         {
           index: 3,
@@ -74,7 +69,7 @@ export default {
         {
           index: 4,
           name: "合作伙伴",
-          listName: ["设计单位", "知名企业", "俱乐部"],
+          listName: ["设计单位", "平台资源"],
         },
         {
           index: 5,
@@ -120,40 +115,6 @@ export default {
     overflow: hidden;
     height: 180px;
 
-    img {
-      display: block;
-      animation: imgPosition 5s linear;
-      transform: translateX(-268px);
-    }
-    @keyframes imgPosition {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-268px);
-      }
-    }
-
-    .backText {
-      width: 100%;
-
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      p {
-        color: #ffffff;
-        text-shadow: 0px -2px 5px rgba(0, 0, 0, 0.19);
-        font-size: 28px;
-        font-family: "PingFang-SC";
-        font-weight: bold;
-        margin: 0 48px;
-      }
-    }
   }
   .navBox {
     height: 88px;
