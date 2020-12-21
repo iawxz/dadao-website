@@ -98,7 +98,7 @@ export default {
           margin-left: 357px;
           img{
             width: 246px;
-            height: 94px;
+            height: auto;
             display: block;
             margin: 0 auto;
           }
@@ -149,7 +149,7 @@ export default {
             }
             p {
               font-size: 18px;
-              font-family: PingFang SC;
+              font-family: '宋体';
               font-weight: bold;
               color: #3d3d3d;
               opacity: 0.9;

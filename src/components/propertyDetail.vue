@@ -40,7 +40,7 @@
         <div class="intro">
           <p class="title">{{ propertyDetail.title }}</p>
           <p class="address">项目地址：{{ address }}</p>
-          <p class="phone">联系电话：{{ propertyDetail.contact }}</p>
+          <!-- <p class="phone">联系电话：{{ propertyDetail.contact }}</p> -->
           <p class="text" v-text="propertyDetail.abstract"></p>
           <div class="introBox">
             <p class="subtitle">● 项目殊荣</p>
@@ -215,6 +215,7 @@ export default {
       img {
         cursor: pointer;
         width: 705px;
+        min-height: 390px;
         height: auto;
         position: absolute;
         z-index: 0;

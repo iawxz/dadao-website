@@ -155,8 +155,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.join {
-  height: 100%;
+.join {  
   .content {
     .LR_layout {
       width: 100%;
@@ -185,17 +184,17 @@ export default {
       .cultureBox {
         margin: 60px 0 0 30px;
         .title {
-          font-size: 24px;
-          font-family: PingFang SC;
-          font-weight: 800;
-          color: #b69d74;
+          font-size: 22px;
+          font-weight: bold;
+          font-family: '宋体';
+          color: #808080;
           margin-bottom: 15px;
         }
         .text {
-          font-size: 16px;
-          font-family: PingFang SC;
-          font-weight: bold;
-          color: rgba($color: #000000, $alpha: 0.7);
+          font-size: 18px;
+          font-family: '宋体';
+          color: #505050;
+          line-height: 35px;
           margin-bottom: 25px;
         }
       }
@@ -210,7 +209,7 @@ export default {
       }
     }
     .recruit {
-      height: 890px;
+      height: 750px;
       .introBox {
         width: 100%;
         height: 200px;
@@ -235,7 +234,7 @@ export default {
           }
           p {
             font-size: 16px;
-            font-family: PingFang SC;
+            font-family: '宋体';
             font-weight: bold;
             color: rgba($color: #000000, $alpha: 0.7);
             line-height: 24px;
@@ -251,7 +250,7 @@ export default {
             border-radius: 18px;
             a {
               font-size: 16px;
-              font-family: Microsoft YaHei;
+              font-family: '宋体';
               font-weight: bold;
               color: #ffffff;
               text-decoration: none;
@@ -270,7 +269,7 @@ export default {
               border-radius: 0px 30px 0px 0px;
 
               font-size: 16px;
-              font-family: Microsoft YaHei;
+              font-family: '宋体';
               font-weight: bold;
               color: #ffffff;
             }
@@ -281,18 +280,15 @@ export default {
               background: #b69d74;
               opacity: 0.9;
               p:first-child {
-                width: 65px;
                 font-size: 16px;
-                font-family: Microsoft YaHei;
-                font-weight: bold;
+                font-family: '宋体';                
                 color: #ffffff;
                 margin-bottom: 15px;
               }
               p:nth-child(2) {
                 width: 226px;
                 font-size: 14px;
-                font-family: Microsoft YaHei;
-                font-weight: bold;
+                font-family: '宋体';                
                 color: #ffffff;
               }
             }
@@ -318,7 +314,7 @@ export default {
           width: 100%;
           text-align: center;
           font-size: 24px;
-          font-family: PingFang SC;
+          font-family: '宋体';
           font-weight: 800;
           color: #b69d74;
           margin-bottom: 17px;
@@ -327,7 +323,7 @@ export default {
           width: 100%;
           text-align: center;
           font-size: 32px;
-          font-family: Roboto;
+          font-family: '宋体';
           font-weight: bold;
           color: #616161;
           opacity: 0.3;
@@ -348,7 +344,7 @@ export default {
           }
           p.title {
             font-size: 16px;
-            font-family: Microsoft YaHei;
+            font-family: '宋体';
             font-weight: bold;
             color: #616161;
             margin-bottom: 11px;
@@ -356,8 +352,7 @@ export default {
           p.subtitle {
             height: 21px;
             font-size: 14px;
-            font-family: Microsoft YaHei;
-            font-weight: bold;
+            font-family: '宋体';            
             color: #616161;
             opacity: 0.8;
             margin-bottom: 15px;
@@ -365,7 +360,7 @@ export default {
           p.name {
             height: 19px;
             font-size: 24px;
-            font-family: PingFang SC;
+            font-family: '宋体';
             font-weight: 800;
             color: #b69d74;
           }

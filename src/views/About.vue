@@ -18,20 +18,22 @@
             <div class="title_EN">ABOUT US</div>
             <div class="text">
               <p>
-                大稻启运最早成立于2007年,
-                总部坐落在美丽的杭州钱塘江畔。核心业务涵盖房地产综合开发、商业地产运营、产业地产运营、物业服务管理、工程建设管理、科技
-                产业投资、高端医疗管理、文化艺术投资等领域。在不断深化发展创新的理念下，大稻启运积极拓展业务板块，经济实力和区域影响力不断地快速提升。<br />
-                大稻启运集团定位于“成为中国领先的城市及产业运营商”，以“投资开发”、“运营服务”为两大业务
-                战略。目前，集团已开发超5A级写字楼、产业园、高端住宅、精品酒店式公寓等多个核心区域优质项
-                目，并赢得市场青睐。为巩固生态运服业务优势，大稻启运集团推出了五个核心概念作为自身的运营
-                模式:商业价值、社区整合、教育共享、健康服务、生态艺术。专注打造可持续的商业和生活空间。
+                大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。核心业务涵盖房地产综合开发<br>
+                、商业地产运营、产业地产运营、物业服务管理、工程建设管理、科技产业投资、高端医疗管<br>
+                理、文化艺术投资等领域。在不断深化发展创新的理念下，大稻启运积极拓展业务板块，经济<br>
+                实力和区域影响力不断地快速提升。<br />
+                大稻启运集团定位于"成为中国领先的城市及产业运营商"，以"投资开发"、"运营服务"为两大<br>
+                业务战略。目前，集团已开发超5A级写字楼、产业园、高端住宅、精品酒店式公寓等多个核心<br>
+                区域优质项目，并赢得市场青睐。为巩固生态运服业务优势，大稻启运集团推出了五个核心概<br>
+                念作为自身的运营模式：商业价值、社区整合、教育共享、健康服务、生态艺术。专注打造可<br>
+                持续的商业和生活空间。
               </p>
             </div>
           </div>
         </div>
         <!-- 企业理念 -->
-        <div class="right" v-else-if="selectIndex == 1">
-          <div class="essay essay_img" v-if="departmentStatus == -1">
+        <div class="right" v-else-if="selectIndex == 1" v-cloak>
+          <div class="essay essay_img" v-if="departmentStatus == -1" v-cloak>
             <div class="imgBox">
               <img src="../assets/2_about/1.png" alt="组织架构" />
               <div class="navBox">
@@ -47,31 +49,70 @@
               </div>
             </div>
           </div>
-          <div class="department" v-else>
+          <div class="department" v-else v-cloak>
             <p class="back" @click="goDetail(-1)"><<<返回上一级</p>
-            <img src="../assets/2_about/department/0.png" v-if="departmentStatus==0" alt="" />
-            <img src="../assets/2_about/department/1.png" v-else-if="departmentStatus==1" alt="" />
-            <img src="../assets/2_about/department/2.png" v-else-if="departmentStatus==2" alt="" />
-            <img src="../assets/2_about/department/3.png" v-else-if="departmentStatus==3" alt="" />
-            <img src="../assets/2_about/department/4.png" v-else-if="departmentStatus==4" alt="" />
-            <img src="../assets/2_about/department/5.png" v-else-if="departmentStatus==5" alt="" />
-            <img src="../assets/2_about/department/6.png" v-else-if="departmentStatus==6" alt="" />
-            <img src="../assets/2_about/department/7.png" v-else-if="departmentStatus==7" alt="" />
-            <img src="../assets/2_about/department/8.png" v-else-if="departmentStatus==8" alt="" />
+            <img
+              src="../assets/2_about/department/0.png"
+              v-if="departmentStatus == 0"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/1.png"
+              v-else-if="departmentStatus == 1"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/2.png"
+              v-else-if="departmentStatus == 2"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/3.png"
+              v-else-if="departmentStatus == 3"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/4.png"
+              v-else-if="departmentStatus == 4"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/5.png"
+              v-else-if="departmentStatus == 5"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/6.png"
+              v-else-if="departmentStatus == 6"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/7.png"
+              v-else-if="departmentStatus == 7"
+              alt=""
+            />
+            <img
+              src="../assets/2_about/department/8.png"
+              v-else-if="departmentStatus == 8"
+              alt=""
+            />
             <!-- <img :src="departmentImg" alt="图片加载不出来"> -->
           </div>
         </div>
         <!-- 企业架构 -->
         <div class="right" v-if="selectIndex == 2">
-          <div class="essay">
-            <div class="title_EN"></div>
-            <div class="text">
+          <div class="essay">            
+            <div class="text" style="padding-top:70px">
               <p>
-                犹如艺术般的创造，对完美和极致孜孜以求，大稻启运集团，立志成为商业运营领域的钟表匠。<br />
+                犹如艺术般的创造，对完美和极致孜孜以求，大稻启运集团，立志成为商业运营领域的钟表<br>
+                匠。<br />
                 <span>大</span
-                >|是秉承钱塘江大潮的精神涵养，百舸争流，力争上游，奋勇为先；是在当下的杭州勇立时代的大潮头；是对城市的大爱，以高度的社会责任感，去回馈城市的关照。<br />
+                >|是秉承钱塘江大潮的精神涵养，百舸争流，力争上游，奋勇为先；是在当下的杭州勇立<br />
+                时代的大潮头；是对城市的大爱，以高度的社会责任感，去回馈城市的关照。<br />
                 <span>稻</span
-                >|播种，生长，到丰满的收获，走过的完整的生命，成熟饱满的稻穗低垂着头，饱含谦逊和丰硕。在江南鱼米之乡，一个稻字就是富足和充实。稻是衣食住行，民之根本，让最本真的日常生活变得美好，便近“道”矣。<br />
+                >|播种，生长，到丰满的收获，走过的完整的生命，成熟饱满的稻穗低垂着头，饱含谦逊<br />
+                和丰硕。在江南鱼米之乡，一个稻字就是富足和充实。稻是衣食住行，民之根本，让最本真<br />
+                的日常生活变得美好，便近“道”矣。<br />
                 <span>启</span
                 >|是每一次启程都始终如一，以初心以百分百用心去付出。<br />
                 <span>運</span
@@ -170,6 +211,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+[v-cloak]{display:none!important}
 .about {
   height: 100%;
 }
@@ -208,35 +250,32 @@ export default {
     }
     .right {
       width: 60%;
+      min-height: 560px;
       overflow: hidden;
       .essay {
-        margin: 60px 0;
-        padding-left: 80px;
+        margin: 60px 0 ;
+        padding-left: 30px;
         min-height: 524px;
-        border-left: 3px solid #b69d74;
-        .title {
-          height: 30px;
-          font-size: 26px;
-          font-family: "楷体";
+        border-left: 3px solid #b69d74;        
+        .title {          
+          font-size: 22px;
           font-weight: bold;
-          color: #828387;
+          font-family: '宋体';
+          color: #808080;
+          padding-top: 30px;
+          margin-bottom: 5px;
         }
-        .title_EN {
-          height: 26px;
-          font-size: 20px;
-          letter-spacing: 3px;
-          font-family: "宋体";
-          font-weight: bold;
-          color: #828387;
-          margin-bottom: 30px;
+        .title_EN {          
+          font-size: 18px;          
         }
         .text {
-          width: 598px;
+          width: 760px;
+          padding-top: 30px;
           p {
-            line-height: 40px;
-            font-size: 16px;
+            font-size: 18px;
             font-family: "宋体";
             color: #505050;
+            line-height: 35px;            
             span {
               font-family: "楷体";
               font-size: 28px;
@@ -298,18 +337,17 @@ export default {
       }
       .department {
         margin: 60px 0;
-        padding-left: 30px;      
+        padding-left: 30px;
         border-left: 3px solid #b69d74;
         .back {
           cursor: pointer;
-          font-size: 20px;
+          font-size: 16px;
           font-family: PingFang SC;
           font-weight: bold;
-          color: #616161;
-          margin-bottom: 25px;
+          color: #666666;
         }
         img {
-          width: 80%;
+          width: 750px;
         }
       }
     }

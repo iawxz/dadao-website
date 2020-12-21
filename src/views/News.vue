@@ -255,7 +255,7 @@ export default {
           width: 100%;
           padding-bottom: 15px;
           text-align: right;
-          // border-bottom: 2px solid #efefef;
+          
 
           cursor: pointer;
           font-size: 16px;

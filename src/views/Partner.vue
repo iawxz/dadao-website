@@ -54,20 +54,21 @@ export default {
     .contentBox {
       width: 60%;
       margin: 60px auto;
-      .essay {
-        width: 53%;
-        font-family: '宋体';        
-        .title {
-          margin-bottom: 30px;
-          font-size: 25px;
+      .essay {        
+        margin-left: 20px;
+        .title {          
+          font-size: 22px;
           font-weight: bold;
-          color: #9fa0a5;
-        }
-        .text {          
+          font-family: '宋体';
+          color: #808080;
           margin-bottom: 30px;
-          font-size: 16px;
-          color: 353535;
-          line-height: 30px;
+        }
+        .text {                    
+          font-size: 18px;
+          font-family: '宋体';
+          color: #505050;
+          line-height: 35px;
+          margin-bottom: 30px;
         }
       }
       img {

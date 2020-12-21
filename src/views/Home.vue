@@ -38,10 +38,7 @@
         <div class="profile">
           <img src="../assets/1_home/logo_profile.png" alt="" />
           <p>
-            大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江
-            畔。核心业务包括地产开发、工程建设、产业投资、高端医
-            疗及艺术投资。在多元化的经营理念下，大稻启运积极拓展
-            业务版图，使其经济实力和区域影响力不断地快速提升。
+            大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。核心业务包括地产开发、工程建设、产业投资等。在多元化的经营理念下，大稻启运积极拓展业务版图，使其经济实力和区域影响力不断地快速提升。
           </p>
         </div>
         <div class="splitline_y"></div>
@@ -404,7 +401,7 @@ export default {
         font-size: 16px;
         font-family: PingFang SC;
         font-weight: 500;
-        color: #333333;
+        color: #666666;
         line-height: 31px;
       }
 
@@ -417,7 +414,6 @@ export default {
           font-weight: bold;
           color: #000000;
           opacity: 0.85;
-
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
@@ -437,14 +433,12 @@ export default {
           font-weight: 500;
           color: #666666;
           line-height: 31px;
-
           overflow: hidden;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           display: -webkit-box;
         }
       }
-
       .newsBox {
         .type {
           display: flex;
@@ -453,7 +447,6 @@ export default {
           font-weight: bold;
           color: #262626;
           cursor: pointer;
-
           .typename {
             margin-right: 25px;
             p {
@@ -546,14 +539,14 @@ export default {
       }
       p.introTitle {
         font-size: 20px;
-        font-family: PingFang SC;
+        font-family: '宋体';
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 5px;
       }
       p.introText {
         font-size: 14px;
-        font-family: PingFang SC;
+        font-family: '宋体';
         font-weight: bold;
         color: #ffffff;
         opacity: 0.9;

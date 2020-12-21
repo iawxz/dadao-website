@@ -59,7 +59,7 @@ export default {
         {
           index: 2,
           name: "走进大稻",
-          listName: ["企业介绍", "企业理念", "企业愿景"],
+          listName: ["企业介绍", "企业架构", "企业愿景"],
         },
         {
           index: 3,
