@@ -307,6 +307,7 @@ export default {
 .home {
   width: 100%;
   .swiperBox {
+    margin-top: 100px;
     // 轮播内容
     .swiper_video {
       width: 100%;
