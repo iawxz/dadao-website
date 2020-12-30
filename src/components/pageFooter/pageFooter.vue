@@ -2,7 +2,7 @@
   <footer>
     <!-- 版权信息 -->
     <div class="copyright">
-      <p>版权所有：大稻启运集团 I 备案号 浙icp备18048792号-1</p>
+      <p>版权所有：大稻启运集团 I 备案号 <a href="https://beian.miit.gov.cn" target="_blank">浙ICP备18048792号</a></p>
       <p>联系大稻启运：400011000</p>
     </div>
     <!-- 媒体平台 -->
@@ -59,6 +59,13 @@ footer {
   .copyright {
     p:first-child {
       margin-bottom: 10px;
+      a{
+        color: white;
+        text-decoration: none;
+      }
+      a:hover{
+        color: rgb(0, 132, 255);
+      }
     }
   }
   .media {
